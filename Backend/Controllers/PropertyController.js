@@ -1,5 +1,5 @@
-const Property = require("../Models/PropertySchema");
-const cloudinary = require("../Config/CloudinaryConfig");
+const Property = require("../Models/PropertySchema.js");
+const cloudinary = require("../Configurations/CloudinaryConfig");
 
 // Create Property
 const createProperty = async (req, res) => {
@@ -89,6 +89,7 @@ const createProperty = async (req, res) => {
           ? amenities.split(",").map((item) => item.trim())
           : [],
       images: imageUrls,
+      createdBy: req.user.userId,
     });
 
     return res.status(201).json({
@@ -103,7 +104,25 @@ const createProperty = async (req, res) => {
   }
 };
 
-// Get All Properties
+// Admin - Get Only Properties Created By Logged In Admin
+const getAdminProperties = async (req, res) => {
+  try {
+    const properties = await Property.find({ createdBy: req.user.userId }).sort({ createdAt: -1 });
+
+    return res.status(200).json({
+      message: "Admin properties fetched successfully",
+      count: properties.length,
+      properties,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Failed to fetch admin properties",
+      error: error.message,
+    });
+  }
+};
+
+// Public - Get All Properties
 const getProperties = async (req, res) => {
   try {
     const properties = await Property.find().sort({ createdAt: -1 });
@@ -126,7 +145,7 @@ const getPropertyByName = async (req, res) => {
   try {
     const { propertyName } = req.params;
 
-    const property = await Property.findOne({ propertyName });
+    const property = await Property.findOne({ propertyName, createdBy: req.user.userId });
 
     if (!property) {
       return res.status(404).json({
@@ -151,7 +170,7 @@ const updateProperty = async (req, res) => {
   try {
     const { propertyName } = req.params;
 
-    const property = await Property.findOne({ propertyName });
+    const property = await Property.findOne({ propertyName, createdBy: req.user.userId });
 
     if (!property) {
       return res.status(404).json({
@@ -239,6 +258,7 @@ const deleteProperty = async (req, res) => {
 
     const property = await Property.findOneAndDelete({
       propertyName,
+      createdBy: req.user.userId,
     });
 
     if (!property) {
@@ -262,6 +282,7 @@ const deleteProperty = async (req, res) => {
 module.exports = {
   createProperty,
   getProperties,
+  getAdminProperties,
   getPropertyByName,
   updateProperty,
   deleteProperty,

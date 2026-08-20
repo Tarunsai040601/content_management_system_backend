@@ -18,8 +18,8 @@ const AdminProperties = () => {
     try {
       setLoading(true);
       const res = await getAdminProperties();
-      if (res.data && res.data.success) {
-        setProperties(res.data.data);
+      if (res.data && res.data.properties) {
+        setProperties(res.data.properties);
       }
     } catch (err) {
       console.error(err);

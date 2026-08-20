@@ -33,8 +33,8 @@ const EditProperty = () => {
     const fetchProperty = async () => {
       try {
         const res = await getPropertyByName(propertyName);
-        if (res.data && res.data.success) {
-          const property = res.data.data;
+        if (res.data && res.data.property) {
+          const property = res.data.property;
           setFormData({
             propertyName: property.propertyName,
             propertyType: property.propertyType,

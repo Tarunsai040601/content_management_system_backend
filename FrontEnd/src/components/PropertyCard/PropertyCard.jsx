@@ -9,7 +9,7 @@ const PropertyCard = ({ property }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = JSON.parse(localStorage.getItem('customerFavorites')) || [];
     const isFav = favorites.some((fav) => fav._id === property._id);
     setIsFavorite(isFav);
   }, [property._id]);
@@ -18,16 +18,16 @@ const PropertyCard = ({ property }) => {
     e.preventDefault();
     e.stopPropagation();
     
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = JSON.parse(localStorage.getItem('customerFavorites')) || [];
     
     if (isFavorite) {
       const newFavs = favorites.filter((fav) => fav._id !== property._id);
-      localStorage.setItem('favorites', JSON.stringify(newFavs));
+      localStorage.setItem('customerFavorites', JSON.stringify(newFavs));
       setIsFavorite(false);
       toast.success('Removed from favorites');
     } else {
       favorites.push(property);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
+      localStorage.setItem('customerFavorites', JSON.stringify(favorites));
       setIsFavorite(true);
       toast.success('Added to favorites');
     }
@@ -35,9 +35,9 @@ const PropertyCard = ({ property }) => {
 
   const handlePropertyClick = () => {
     // Save to recently viewed
-    const viewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+    const viewed = JSON.parse(localStorage.getItem('customerRecentlyViewed')) || [];
     const newViewed = [property, ...viewed.filter(p => p._id !== property._id)].slice(0, 10);
-    localStorage.setItem('recentlyViewed', JSON.stringify(newViewed));
+    localStorage.setItem('customerRecentlyViewed', JSON.stringify(newViewed));
   };
 
   const formatPrice = (price) => {

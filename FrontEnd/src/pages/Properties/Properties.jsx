@@ -34,8 +34,8 @@ const Properties = () => {
   const fetchProperties = async () => {
     try {
       const response = await getAllProperties();
-      if (response.data && response.data.success) {
-        setProperties(response.data.data);
+      if (response.data && response.data.properties) {
+        setProperties(response.data.properties);
       }
     } catch (error) {
       console.error("Error fetching properties:", error);

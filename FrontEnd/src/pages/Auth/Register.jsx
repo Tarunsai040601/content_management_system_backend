@@ -25,7 +25,11 @@ const Register = () => {
       const res = await registerApi(formData);
       if (res.data) {
         toast.success('Registration successful! Please login.');
-        navigate('/login');
+        if (formData.role === 'admin') {
+          navigate('/admin/login');
+        } else {
+          navigate('/login');
+        }
       }
     } catch (err) {
       console.error(err);
@@ -78,6 +82,21 @@ const Register = () => {
               placeholder="Create a password"
               required 
             />
+          </div>
+
+          <div className="form-group">
+            <label>Role</label>
+            <select 
+              name="role" 
+              value={formData.role} 
+              onChange={handleChange} 
+              required
+              className="form-select"
+              style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd', marginTop: '5px' }}
+            >
+              <option value="customer">Customer</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
           
           <button type="submit" className="btn btn-primary btn-block auth-btn" disabled={loading}>

@@ -27,8 +27,11 @@ const AdminLogin = () => {
       setLoading(true);
       const res = await loginApi(formData);
       if (res.data && res.data.token) {
-        // Technically backend should return role or we decode JWT to verify admin
-        // For this project, if they login here, we assume admin or check if there's a role field
+        if (res.data.user && res.data.user.role !== 'admin') {
+          toast.error('You are not an Admin. Please login via Customer Portal.');
+          return;
+        }
+        localStorage.setItem('adminUser', JSON.stringify(res.data.user));
         loginAdmin(res.data.token);
         toast.success('Admin Login successful!');
         navigate('/admin/dashboard');

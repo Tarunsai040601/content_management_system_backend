@@ -15,9 +15,9 @@ const Home = () => {
     const fetchProperties = async () => {
       try {
         const response = await getAllProperties();
-        if (response.data && response.data.success) {
+        if (response.data && response.data.properties) {
           // Take first 4 properties as featured
-          setFeaturedProperties(response.data.data.slice(0, 4));
+          setFeaturedProperties(response.data.properties.slice(0, 4));
         }
       } catch (error) {
         console.error("Error fetching featured properties:", error);

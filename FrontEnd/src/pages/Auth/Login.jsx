@@ -26,9 +26,14 @@ const Login = () => {
       setLoading(true);
       const res = await loginApi(formData);
       if (res.data && res.data.token) {
+        if (res.data.user && res.data.user.role === 'admin') {
+          toast.error('You are an Admin. Please login via Admin Portal.');
+          return;
+        }
+        localStorage.setItem('customerUser', JSON.stringify(res.data.user));
         loginCustomer(res.data.token);
         toast.success('Login successful!');
-        navigate('/');
+        navigate('/customer/dashboard');
       } else {
         toast.error(res.data.message || 'Login failed');
       }

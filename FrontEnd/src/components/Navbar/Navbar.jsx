@@ -43,6 +43,9 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link to="/recently-viewed" className="nav-links" onClick={closeMenu}>Recently Viewed</Link>
               </li>
+              <li className="nav-item">
+                <Link to="/customer/dashboard" className="nav-links" onClick={closeMenu}>Dashboard</Link>
+              </li>
             </>
           )}
 

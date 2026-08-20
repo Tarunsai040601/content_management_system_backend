@@ -21,8 +21,8 @@ const AdminDashboard = () => {
       // In a real scenario, there might be a dedicated stats API.
       // Here, we fetch the admin's properties and compute the stats.
       const response = await getAdminProperties();
-      if (response.data && response.data.success) {
-        const properties = response.data.data;
+      if (response.data && response.data.properties) {
+        const properties = response.data.properties;
         
         const counts = {
           total: properties.length,

@@ -23,27 +23,30 @@ const PropertyDetails = () => {
   const fetchPropertyDetails = async () => {
     try {
       setLoading(true);
-      const response = await getPropertyByName(propertyName);
-      if (response.data && response.data.success) {
-        const data = response.data.data;
-        setProperty(data);
-        
-        // Check if favorite
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        setIsFavorite(favorites.some((fav) => fav._id === data._id));
+      // Backend restricts getPropertyByName to admin who created it.
+      // For customers, we fetch all and find the match.
+      const { getAllProperties } = await import('../../services/propertyService');
+      const response = await getAllProperties();
+      
+      if (response.data && response.data.properties) {
+        const found = response.data.properties.find(p => p.propertyName === propertyName);
+        if (found) {
+          setProperty(found);
+          // Check if favorite
+          const favorites = JSON.parse(localStorage.getItem('customerFavorites')) || [];
+          setIsFavorite(favorites.some((fav) => fav._id === found._id));
 
-        // Add to recently viewed
-        const viewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
-        const newViewed = [data, ...viewed.filter(p => p._id !== data._id)].slice(0, 10);
-        localStorage.setItem('recentlyViewed', JSON.stringify(newViewed));
+          // Add to recently viewed
+          const viewed = JSON.parse(localStorage.getItem('customerRecentlyViewed')) || [];
+          const newViewed = [found, ...viewed.filter(p => p._id !== found._id)].slice(0, 10);
+          localStorage.setItem('customerRecentlyViewed', JSON.stringify(newViewed));
+        } else {
+          setError('Property not found.');
+        }
       }
     } catch (err) {
       console.error(err);
-      if (err.response && (err.response.status === 401 || err.response.status === 403)) {
-        setError('You need administrator privileges to view full property details (backend restriction).');
-      } else {
-        setError('Failed to load property details. Please try again later.');
-      }
+      setError('Failed to load property details. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -52,16 +55,16 @@ const PropertyDetails = () => {
   const toggleFavorite = () => {
     if (!property) return;
     
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = JSON.parse(localStorage.getItem('customerFavorites')) || [];
     
     if (isFavorite) {
       const newFavs = favorites.filter((fav) => fav._id !== property._id);
-      localStorage.setItem('favorites', JSON.stringify(newFavs));
+      localStorage.setItem('customerFavorites', JSON.stringify(newFavs));
       setIsFavorite(false);
       toast.success('Removed from favorites');
     } else {
       favorites.push(property);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
+      localStorage.setItem('customerFavorites', JSON.stringify(favorites));
       setIsFavorite(true);
       toast.success('Added to favorites');
     }

@@ -10,7 +10,7 @@ const RecentlyViewed = () => {
 
   useEffect(() => {
     const fetchRecent = () => {
-      const recent = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+      const recent = JSON.parse(localStorage.getItem('customerRecentlyViewed')) || [];
       setRecentlyViewed(recent);
     };
 

@@ -9,7 +9,7 @@ const Favorites = () => {
 
   useEffect(() => {
     const fetchFavorites = () => {
-      const favs = JSON.parse(localStorage.getItem('favorites')) || [];
+      const favs = JSON.parse(localStorage.getItem('customerFavorites')) || [];
       setFavorites(favs);
     };
 

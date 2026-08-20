@@ -13,6 +13,7 @@ import Login from '../pages/Auth/Login';
 import Register from '../pages/Auth/Register';
 import AdminLogin from '../pages/Admin/AdminLogin/AdminLogin';
 import AdminDashboard from '../pages/Admin/AdminDashboard/AdminDashboard';
+import CustomerDashboard from '../pages/CustomerDashboard/CustomerDashboard';
 import AdminProperties from '../pages/Admin/AdminProperties/AdminProperties';
 import CreateProperty from '../pages/Admin/CreateProperty/CreateProperty';
 import EditProperty from '../pages/Admin/EditProperty/EditProperty';
@@ -46,6 +47,11 @@ const AppRoutes = () => {
           <Route path="favorites" element={
             <ProtectedCustomerRoute>
               <Favorites />
+            </ProtectedCustomerRoute>
+          } />
+          <Route path="customer/dashboard" element={
+            <ProtectedCustomerRoute>
+              <CustomerDashboard />
             </ProtectedCustomerRoute>
           } />
           <Route path="recently-viewed" element={<RecentlyViewed />} />

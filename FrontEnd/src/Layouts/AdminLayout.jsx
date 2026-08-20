@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import AdminNavbar from "../Components/DashBoards/AdminDashBoard/AdminNavbar/AdminNavbar.jsx";
+import AdminNavbar from '../Components/DashBoards/AdminDashBoard/AdminNavbar/AdminNavbar.jsx'
 import "./AdminLayout.css";
 
 const AdminLayout = () => {
@@ -12,11 +12,14 @@ const AdminLayout = () => {
 
   return (
     <div className="admin-layout">
-      <AdminNavbar />
-
-      <main className="admin-layout-content">
-        <Outlet />
-      </main>
+      {/* <AdminSidebar /> */}
+      <AdminNavbar/>
+      <div className="admin-main-wrapper">
+        {/* <AdminHeader /> */}
+        <main className="admin-main-content">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };

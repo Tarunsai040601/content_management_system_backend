@@ -1,0 +1,944 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+/* ================================
+   RESET
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.register-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #f4f1eb;
+  font-family: "DM Sans", sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+}
+
+/* ================================
+   BACKGROUND SHAPES
+================================ */
+
+.register-bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.shape-one {
+  width: 450px;
+  height: 450px;
+
+  top: -220px;
+  right: -100px;
+
+  background: rgba(177, 142, 83, 0.13);
+}
+
+.shape-two {
+  width: 350px;
+  height: 350px;
+
+  bottom: -200px;
+  left: -120px;
+
+  background: rgba(36, 58, 48, 0.08);
+}
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.register-container {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 720px;
+
+  display: grid;
+  grid-template-columns: 48% 52%;
+
+  position: relative;
+  z-index: 2;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 30px 80px rgba(31, 46, 39, 0.15);
+}
+
+/* ================================
+   LEFT SHOWCASE
+================================ */
+
+.register-showcase {
+  position: relative;
+  min-height: 720px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 36, 30, 0.96),
+      rgba(40, 62, 51, 0.72)
+    ),
+    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=90")
+      center / cover no-repeat;
+}
+
+.showcase-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 24, 19, 0.25),
+      rgba(10, 24, 19, 0.92)
+    );
+}
+
+/* ================================
+   SHOWCASE CONTENT
+================================ */
+
+.showcase-content {
+  height: 100%;
+
+  position: relative;
+  z-index: 2;
+
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================================
+   LOGO
+================================ */
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  color: #ffffff;
+
+  font-size: 23px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #d2ad69;
+
+  font-size: 23px;
+}
+
+/* ================================
+   SHOWCASE TEXT
+================================ */
+
+.showcase-text {
+  margin-top: auto;
+  margin-bottom: 60px;
+
+  max-width: 500px;
+}
+
+.showcase-small-title {
+  color: #d4b06a;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 18px;
+}
+
+.showcase-text h1 {
+  color: #ffffff;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(42px, 4vw, 64px);
+
+  font-weight: 600;
+
+  line-height: 1.08;
+
+  margin-bottom: 23px;
+}
+
+.showcase-text h1 span {
+  color: #d4b06a;
+
+  font-style: italic;
+}
+
+.showcase-text > p {
+  max-width: 440px;
+
+  color: rgba(255, 255, 255, 0.76);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+/* ================================
+   PROPERTY STATS
+================================ */
+
+.property-stats {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+}
+
+.stat-item h3 {
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  margin-bottom: 4px;
+}
+
+.stat-item p {
+  color: rgba(255, 255, 255, 0.58);
+
+  font-size: 12px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ================================
+   FORM SECTION
+================================ */
+
+.register-form-section {
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 50px 70px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 460px;
+}
+
+/* ================================
+   MOBILE LOGO
+================================ */
+
+.mobile-logo {
+  display: none;
+}
+
+/* ================================
+   FORM HEADING
+================================ */
+
+.form-heading {
+  margin-bottom: 30px;
+}
+
+.form-heading > p {
+  color: #ad8241;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+
+  margin-bottom: 9px;
+}
+
+.form-heading h2 {
+  color: #263a32;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 38px;
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  margin-bottom: 9px;
+}
+
+.form-heading span {
+  color: #8d948f;
+
+  font-size: 14px;
+}
+
+/* ================================
+   INPUT GROUP
+================================ */
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+
+  color: #35443d;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  margin-bottom: 8px;
+}
+
+/* ================================
+   INPUT WRAPPER
+================================ */
+
+.input-wrapper {
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  background: #fafbf9;
+
+  border: 1px solid #e2e6e2;
+
+  border-radius: 11px;
+
+  transition: all 0.25s ease;
+}
+
+.input-wrapper:hover {
+  border-color: #c8cec9;
+}
+
+.input-wrapper:focus-within {
+  background: #ffffff;
+
+  border-color: #b08a4e;
+
+  box-shadow:
+    0 0 0 4px rgba(176, 138, 78, 0.08);
+}
+
+/* ================================
+   INPUT ICON
+================================ */
+
+.input-icon {
+  width: 48px;
+  min-width: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999f9a;
+
+  font-size: 15px;
+}
+
+/* ================================
+   INPUT
+================================ */
+
+.input-wrapper input,
+.input-wrapper select {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #293b34;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 13px;
+
+  padding-right: 15px;
+}
+
+.input-wrapper input::placeholder {
+  color: #adb2ae;
+}
+
+/* ================================
+   SELECT
+================================ */
+
+.input-wrapper select {
+  appearance: none;
+
+  cursor: pointer;
+
+  padding-right: 40px;
+}
+
+.select-arrow {
+  position: absolute;
+
+  right: 17px;
+
+  color: #777f79;
+
+  pointer-events: none;
+
+  font-size: 17px;
+}
+
+/* ================================
+   PASSWORD TOGGLE
+================================ */
+
+.password-toggle {
+  width: 45px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #858d87;
+
+  cursor: pointer;
+
+  font-size: 17px;
+
+  transition: 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #263c33;
+}
+
+/* ================================
+   TERMS
+================================ */
+
+.terms {
+  margin-top: 4px;
+  margin-bottom: 23px;
+}
+
+.terms label {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  cursor: pointer;
+}
+
+.terms input {
+  width: 15px;
+  height: 15px;
+
+  cursor: pointer;
+
+  accent-color: #263c33;
+}
+
+.terms span {
+  color: #858c86;
+
+  font-size: 11.5px;
+}
+
+.terms a {
+  color: #aa7e3e;
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   REGISTER BUTTON
+================================ */
+
+.register-button {
+  width: 100%;
+  height: 54px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: #263c33;
+
+  color: #ffffff;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.register-button::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 0;
+  height: 100%;
+
+  background: #b08a4e;
+
+  transition: width 0.35s ease;
+}
+
+.register-button:hover::before {
+  width: 100%;
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(38, 60, 51, 0.18);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+.register-button:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+.register-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.button-arrow {
+  font-size: 20px;
+
+  transition: transform 0.3s ease;
+}
+
+.register-button:hover .button-arrow {
+  transform: translateX(5px);
+}
+
+/* ================================
+   LOGIN
+================================ */
+
+.login-section {
+  margin-top: 23px;
+
+  text-align: center;
+
+  color: #8b928c;
+
+  font-size: 12.5px;
+}
+
+.login-section a {
+  margin-left: 5px;
+
+  color: #a87d3d;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.login-section a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   SECURE TEXT
+================================ */
+
+.secure-text {
+  margin-top: 25px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #eeeeeb;
+
+  text-align: center;
+
+  color: #a0a6a1;
+
+  font-size: 10.5px;
+}
+
+.secure-text span {
+  color: #b08a4e;
+
+  margin-right: 5px;
+}
+
+/* ================================
+   SWEET ALERT CUSTOMIZATION
+================================ */
+
+.swal2-popup {
+  border-radius: 18px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+}
+
+.swal2-title {
+  font-family: "Playfair Display", serif !important;
+
+  color: #263c33 !important;
+}
+
+.swal2-html-container {
+  color: #737a75 !important;
+
+  font-size: 14px !important;
+}
+
+.swal2-confirm {
+  border-radius: 8px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-weight: 600 !important;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1050px) {
+  .register-page {
+    padding: 20px;
+  }
+
+  .register-container {
+    grid-template-columns: 43% 57%;
+
+    min-height: 680px;
+  }
+
+  .register-showcase {
+    min-height: 680px;
+  }
+
+  .showcase-content {
+    padding: 38px;
+  }
+
+  .register-form-section {
+    padding: 40px;
+  }
+
+  .showcase-text h1 {
+    font-size: 44px;
+  }
+
+  .property-stats {
+    gap: 15px;
+  }
+}
+
+/* ================================
+   TABLET SMALL
+================================ */
+
+@media (max-width: 850px) {
+  .register-container {
+    grid-template-columns: 40% 60%;
+  }
+
+  .showcase-content {
+    padding: 30px;
+  }
+
+  .register-form-section {
+    padding: 35px 30px;
+  }
+
+  .showcase-text h1 {
+    font-size: 38px;
+  }
+
+  .showcase-text > p {
+    font-size: 13px;
+  }
+
+  .property-stats {
+    gap: 10px;
+  }
+
+  .stat-item h3 {
+    font-size: 17px;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+  .register-page {
+    min-height: 100vh;
+
+    padding: 0;
+
+    align-items: stretch;
+
+    background:
+      linear-gradient(
+        rgba(25, 43, 36, 0.75),
+        rgba(25, 43, 36, 0.75)
+      ),
+      url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=90")
+        center / cover no-repeat;
+  }
+
+  .register-container {
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: block;
+
+    background: transparent;
+
+    border-radius: 0;
+
+    box-shadow: none;
+  }
+
+  .register-showcase {
+    display: none;
+  }
+
+  .register-form-section {
+    min-height: 100vh;
+
+    padding: 30px 20px;
+
+    background: transparent;
+  }
+
+  .register-card {
+    width: 100%;
+
+    max-width: 500px;
+
+    padding: 30px 23px;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border-radius: 22px;
+
+    box-shadow:
+      0 25px 70px rgba(0, 0, 0, 0.25);
+  }
+
+  .mobile-logo {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    color: #263c33;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 25px;
+  }
+
+  .mobile-logo .logo-icon {
+    width: 38px;
+    height: 38px;
+
+    border-color: #b08a4e;
+
+    color: #b08a4e;
+  }
+
+  .form-heading {
+    text-align: center;
+
+    margin-bottom: 26px;
+  }
+
+  .form-heading h2 {
+    font-size: 30px;
+  }
+
+  .form-heading span {
+    font-size: 12px;
+  }
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+  .register-form-section {
+    padding: 18px 12px;
+  }
+
+  .register-card {
+    padding: 25px 18px;
+
+    border-radius: 18px;
+  }
+
+  .mobile-logo {
+    margin-bottom: 21px;
+  }
+
+  .form-heading {
+    margin-bottom: 22px;
+  }
+
+  .form-heading > p {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .form-heading h2 {
+    font-size: 27px;
+  }
+
+  .form-heading span {
+    font-size: 11px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .input-wrapper {
+    height: 49px;
+  }
+
+  .register-button {
+    height: 51px;
+  }
+
+  .login-section {
+    margin-top: 19px;
+  }
+
+  .secure-text {
+    margin-top: 20px;
+
+    padding-top: 15px;
+  }
+}
+
+/* ================================
+   VERY SMALL DEVICES
+================================ */
+
+@media (max-width: 350px) {
+  .register-form-section {
+    padding: 12px 8px;
+  }
+
+  .register-card {
+    padding: 22px 15px;
+  }
+
+  .form-heading h2 {
+    font-size: 24px;
+  }
+
+  .input-wrapper {
+    height: 46px;
+  }
+
+  .input-icon {
+    width: 42px;
+    min-width: 42px;
+  }
+
+  .terms span {
+    font-size: 10.5px;
+  }
+}

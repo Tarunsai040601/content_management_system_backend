@@ -1,0 +1,361 @@
+/* ========================================
+   ADMIN NAVBAR
+======================================== */
+
+.admin-navbar {
+  width: 100%;
+  min-height: 75px;
+
+  padding: 0 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 1000;
+
+  background: #263c33;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 5px 20px rgba(30, 48, 40, 0.12);
+}
+
+/* ========================================
+   BRAND
+======================================== */
+
+.admin-navbar-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+.admin-navbar-brand h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 25px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+}
+
+.admin-navbar-brand span {
+  color: #d3ad68;
+
+  padding-left: 13px;
+
+  border-left: 1px solid
+    rgba(255, 255, 255, 0.25);
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+}
+
+/* ========================================
+   NAV LINKS
+======================================== */
+
+.admin-navbar-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.admin-navbar-links a,
+.admin-logout-btn {
+  min-height: 40px;
+
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.admin-navbar-links a:hover {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ========================================
+   LOGOUT BUTTON
+======================================== */
+
+.admin-logout-btn {
+  margin-left: 5px;
+
+  color: #ffffff !important;
+
+  background: #b08a4e !important;
+}
+
+.admin-logout-btn:hover {
+  background: #c19a5d !important;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   MOBILE TOGGLE
+======================================== */
+
+.admin-menu-toggle {
+  display: none;
+
+  width: 43px;
+  height: 43px;
+
+  padding: 0;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.2);
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  cursor: pointer;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+}
+
+.admin-menu-toggle span {
+  width: 21px;
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* ========================================
+   TOGGLE → X
+======================================== */
+
+.admin-menu-toggle.toggle-active span:nth-child(1) {
+  transform:
+    translateY(7px)
+    rotate(45deg);
+}
+
+.admin-menu-toggle.toggle-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.admin-menu-toggle.toggle-active span:nth-child(3) {
+  transform:
+    translateY(-7px)
+    rotate(-45deg);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 768px) {
+
+  .admin-navbar {
+    min-height: 68px;
+
+    padding: 0 20px;
+  }
+
+  .admin-navbar-brand h1 {
+    font-size: 22px;
+  }
+
+  .admin-navbar-brand span {
+    font-size: 9px;
+  }
+
+  /* Show hamburger */
+
+  .admin-menu-toggle {
+    display: flex;
+  }
+
+  /* Hide menu initially */
+
+  .admin-navbar-links {
+    position: absolute;
+
+    top: 68px;
+    left: 0;
+
+    width: 100%;
+
+    padding: 15px 20px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 7px;
+
+    background: #263c33;
+
+    border-top: 1px solid
+      rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+      0 15px 25px
+      rgba(20, 35, 29, 0.18);
+
+    /* Hidden */
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  /* Open menu */
+
+  .admin-navbar-links.admin-menu-open {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+  .admin-navbar-links a,
+  .admin-logout-btn {
+    width: 100%;
+
+    min-height: 45px;
+
+    justify-content: flex-start;
+
+    padding: 0 15px;
+
+    border-radius: 8px;
+  }
+
+  .admin-navbar-links a:hover {
+    background:
+      rgba(255, 255, 255, 0.08);
+  }
+
+  .admin-logout-btn {
+    margin-left: 0;
+
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .admin-navbar {
+    min-height: 64px;
+
+    padding: 0 15px;
+  }
+
+  .admin-navbar-brand {
+    gap: 8px;
+  }
+
+  .admin-navbar-brand h1 {
+    font-size: 20px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .admin-navbar-brand span {
+    display: none;
+  }
+
+  .admin-menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .admin-navbar-links {
+    top: 64px;
+
+    padding:
+      12px 15px 17px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 350px) {
+
+  .admin-navbar-brand h1 {
+    font-size: 18px;
+  }
+
+  .admin-menu-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .admin-menu-toggle span {
+    width: 19px;
+  }
+}

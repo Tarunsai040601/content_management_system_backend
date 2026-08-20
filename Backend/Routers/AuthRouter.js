@@ -1,5 +1,5 @@
 const express = require("express");
-const { Register, Login } = require("../Controllers/AuthController");
+const { Register, Login } = require("../Controllers/AuthController.js");
 const routerData = express.Router();
 const perfix = "/registerRouter";
 // register router

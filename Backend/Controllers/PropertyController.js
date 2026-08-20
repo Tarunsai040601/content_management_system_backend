@@ -1,5 +1,5 @@
 const Property = require("../Models/PropertySchema.js");
-const cloudinary = require("../Configurations/CloudinaryConfig");
+const cloudinary = require("../Configurations/CloudinaryConfig.js");
 
 // Create Property
 const createProperty = async (req, res) => {

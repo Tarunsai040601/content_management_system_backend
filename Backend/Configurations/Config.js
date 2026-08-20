@@ -1,14 +1,22 @@
 const mongoose = require("mongoose");
-const dotenv = require("dotenv").config({ quiet: true });
+const dotenv = require("dotenv");
+
+dotenv.config({ quiet: true });
+
 const dataBaseURL = process.env.MONGODB_URL;
-// console.log("dataBaseURL:", dataBaseURL);
-const DataBaseConnection = () => {
+
+const DataBaseConnection = async () => {
   try {
+    await mongoose.connect(dataBaseURL);
+
     console.log(
-      `DataBase connected Sucessfully on ${process.env.DATABASENAME} `,
+      `DataBase connected Successfully on ${process.env.DATABASENAME}`,
     );
   } catch (error) {
-    console.log(`DataBase connected issues on ${process.env.DATABASENAME} `);
+    console.log(`DataBase connection issues on ${process.env.DATABASENAME}`);
+
+    console.log("Error:", error.message);
   }
 };
+
 module.exports = DataBaseConnection;

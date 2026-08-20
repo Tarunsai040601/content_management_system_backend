@@ -89,20 +89,20 @@ const AdminNavbar = () => {
       >
 
         <Link
-          to="/admin-dashboard"
+          to="/admin-home"
           onClick={closeMenu}
         >
           Home
         </Link>
 
         <Link
-          to="/admin-dashboard/add-details"
+          to="/admin-home/add-details"
           onClick={closeMenu}
         >
           Add Details
         </Link>
         <Link
-          to="/admin-dashboard/show-details"
+          to="/admin-home/show-details"
           onClick={closeMenu}
         >
           ShowDetails

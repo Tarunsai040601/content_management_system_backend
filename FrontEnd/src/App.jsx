@@ -6,6 +6,9 @@ import Login from "./Pages/Login/Login.jsx";
 
 import AdminLayout from "./Layouts/AdminLayout.jsx";
 import CustomerLayout from "./Layouts/CustomerLayout.jsx";
+import AdminHome from "./Components/DashBoards/AdminDashBoard/AdminHome/AdminHome.jsx";
+import AddDetails from "./Components/DashBoards/AdminDashBoard/AddDetails/AddDetails.jsx";
+import AdminShowDeatails from "./Components/DashBoards/AdminDashBoard/AdminShowDetails/AdminShowDeatails.jsx";
 
 
 const App = () => {
@@ -25,9 +28,11 @@ const App = () => {
           ADMIN LAYOUT
       ========================= */}
 
-      <Route path="/admin-dashboard" element={<AdminLayout />}>
-        {/* /admin-dashboard */}
-        {/* <Route index element={<AdminDashboard />} /> */}
+      <Route path="/admin-home" element={<AdminLayout />}>
+        {/* /admin-home */}
+        <Route index element={<AdminHome/>} />
+        <Route path="add-details" element={<AddDetails/>}/>
+        <Route path="show-details" element={<AdminShowDeatails/>}/>
 
         {/* /admin-dashboard/add-details */}
         {/* <Route path="add-details" element={<AddDetails />} /> */}

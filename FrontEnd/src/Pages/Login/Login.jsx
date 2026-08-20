@@ -152,7 +152,7 @@ const Login = () => {
         });
 
         // Admin Dashboard
-        navigate("/admin-dashboard");
+        navigate("/admin-home");
 
         return;
       }

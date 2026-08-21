@@ -34,7 +34,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Email validation
+    // =========================
+    // EMAIL VALIDATION
+    // =========================
+
     if (!formData.email.trim()) {
       Swal.fire({
         icon: "warning",
@@ -46,7 +49,10 @@ const Login = () => {
       return;
     }
 
-    // Password validation
+    // =========================
+    // PASSWORD VALIDATION
+    // =========================
+
     if (!formData.password) {
       Swal.fire({
         icon: "warning",
@@ -97,17 +103,15 @@ const Login = () => {
         return;
       }
 
-      // =================================================
-      // IMPORTANT:
-      // Backend response:
-      //
-      // data.user.role
-      // data.token
-      // =================================================
+      // =========================
+      // GET USER + TOKEN
+      // =========================
 
-      const role = data.user?.role;
+      const user = data.user;
+      const role = user?.role;
       const token = data.token;
 
+      console.log("User:", user);
       console.log("User Role:", role);
       console.log("Token:", token);
 
@@ -127,21 +131,42 @@ const Login = () => {
       }
 
       // =========================
-      // ADMIN LOGIN
+      // USER CHECK
       // =========================
 
+      if (!user) {
+        Swal.fire({
+          icon: "error",
+          title: "Login Error",
+          text: "User information was not received.",
+          confirmButtonColor: "#263c33",
+        });
+
+        return;
+      }
+
+      // =========================================================
+      // ADMIN LOGIN
+      // =========================================================
+
       if (role === "admin") {
-        // Save ADMIN token
+        // -----------------------------------------
+        // Save ONLY admin authentication
+        // -----------------------------------------
+
         localStorage.setItem("adminToken", token);
 
-        // Remove customer token
-        localStorage.removeItem("customerToken");
+        localStorage.setItem("adminUser", JSON.stringify(user));
 
-        // Save role
+        // Current active role
         localStorage.setItem("userRole", "admin");
 
-        // Save admin details if needed later
-        localStorage.setItem("adminUser", JSON.stringify(data.user));
+        // IMPORTANT:
+        // Do NOT remove customerToken
+        // Do NOT remove customerUser
+
+        console.log("Admin Token Saved:", token);
+        console.log("Admin User Saved:", user);
 
         await Swal.fire({
           icon: "success",
@@ -151,28 +176,34 @@ const Login = () => {
           confirmButtonColor: "#263c33",
         });
 
-        // Admin Dashboard
+        // Navigate to Admin Dashboard
         navigate("/admin-home");
 
         return;
       }
 
-      // =========================
+      // =========================================================
       // CUSTOMER LOGIN
-      // =========================
+      // =========================================================
 
       if (role === "customer") {
-        // Save CUSTOMER token
+        // -----------------------------------------
+        // Save ONLY customer authentication
+        // -----------------------------------------
+
         localStorage.setItem("customerToken", token);
 
-        // Remove admin token
-        localStorage.removeItem("adminToken");
+        localStorage.setItem("customerUser", JSON.stringify(user));
 
-        // Save role
+        // Current active role
         localStorage.setItem("userRole", "customer");
 
-        // Save customer details if needed
-        localStorage.setItem("customerUser", JSON.stringify(data.user));
+        // IMPORTANT:
+        // Do NOT remove adminToken
+        // Do NOT remove adminUser
+
+        console.log("Customer Token Saved:", token);
+        console.log("Customer User Saved:", user);
 
         await Swal.fire({
           icon: "success",
@@ -182,15 +213,15 @@ const Login = () => {
           confirmButtonColor: "#263c33",
         });
 
-        // Customer Dashboard
+        // Navigate to Customer Dashboard
         navigate("/customer-dashboard");
 
         return;
       }
 
-      // =========================
+      // =========================================================
       // INVALID ROLE
-      // =========================
+      // =========================================================
 
       Swal.fire({
         icon: "error",
@@ -214,7 +245,9 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      {/* Decorative Shapes */}
+      {/* =========================
+          DECORATIVE SHAPES
+      ========================= */}
 
       <div className="login-orb login-orb-one"></div>
 
@@ -222,18 +255,22 @@ const Login = () => {
 
       <div className="login-container">
         {/* =========================
-            LEFT
+            LEFT VISUAL SECTION
         ========================= */}
 
         <div className="login-visual">
           <div className="login-image-overlay"></div>
 
           <div className="login-visual-content">
+            {/* Brand */}
+
             <div className="login-brand">
               <span className="login-brand-icon">⌂</span>
 
               <span>ESTORA</span>
             </div>
+
+            {/* Quote */}
 
             <div className="login-quote">
               <div className="quote-line"></div>
@@ -250,6 +287,8 @@ const Login = () => {
               </p>
             </div>
 
+            {/* Featured Property */}
+
             <div className="login-property-card">
               <div className="mini-property-image"></div>
 
@@ -265,12 +304,14 @@ const Login = () => {
         </div>
 
         {/* =========================
-            RIGHT
+            RIGHT FORM SECTION
         ========================= */}
 
         <div className="login-form-section">
           <div className="login-card">
-            {/* Mobile Logo */}
+            {/* =========================
+                MOBILE LOGO
+            ========================= */}
 
             <div className="login-mobile-brand">
               <span className="login-brand-icon">⌂</span>
@@ -278,7 +319,9 @@ const Login = () => {
               <span>ESTORA</span>
             </div>
 
-            {/* Heading */}
+            {/* =========================
+                HEADING
+            ========================= */}
 
             <div className="login-heading">
               <span className="login-overline">WELCOME BACK</span>
@@ -297,7 +340,9 @@ const Login = () => {
             ========================= */}
 
             <form onSubmit={handleSubmit}>
-              {/* Email */}
+              {/* =========================
+                  EMAIL
+              ========================= */}
 
               <div className="login-input-group">
                 <label htmlFor="login-email">Email Address</label>
@@ -317,7 +362,9 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Password */}
+              {/* =========================
+                  PASSWORD
+              ========================= */}
 
               <div className="login-input-group">
                 <div className="login-label-row">
@@ -347,7 +394,9 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Button */}
+              {/* =========================
+                  LOGIN BUTTON
+              ========================= */}
 
               <button type="submit" className="login-submit" disabled={loading}>
                 <span>{loading ? "Signing In..." : "Sign In"}</span>
@@ -356,7 +405,9 @@ const Login = () => {
               </button>
             </form>
 
-            {/* Register */}
+            {/* =========================
+                REGISTER
+            ========================= */}
 
             <div className="login-register">
               <span>Don't have an account?</span>
@@ -364,7 +415,9 @@ const Login = () => {
               <a href="/register">Create Account</a>
             </div>
 
-            {/* Security */}
+            {/* =========================
+                SECURITY
+            ========================= */}
 
             <div className="login-security">
               <span>✦</span>

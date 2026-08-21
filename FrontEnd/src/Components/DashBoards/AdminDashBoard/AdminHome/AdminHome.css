@@ -1,0 +1,423 @@
+/* =========================================
+   ADMIN HOME PAGE
+========================================= */
+
+.admin-home-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=90");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   DARK TRANSPARENT OVERLAY
+========================================= */
+
+.admin-home-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(10, 30, 25, 0.72),
+      rgba(25, 45, 39, 0.48),
+      rgba(0, 0, 0, 0.58)
+    );
+
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  z-index: 1;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.admin-home-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================
+   GLASS CARD
+========================================= */
+
+.admin-home-glass-card {
+  width: 100%;
+  max-width: 720px;
+
+  padding: 65px 60px;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.13);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-sizing: border-box;
+
+  animation: adminCardAppear 0.8s ease forwards;
+}
+
+
+/* =========================================
+   BADGE
+========================================= */
+
+.admin-home-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 18px;
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 22px;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.admin-home-glass-card h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(38px, 6vw, 68px);
+
+  line-height: 1.08;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+}
+
+.admin-home-glass-card h1 span {
+  display: inline-block;
+
+  color: #d6e4dc;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.admin-home-glass-card p {
+  max-width: 590px;
+
+  margin: 25px auto 0;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 17px;
+
+  line-height: 1.8;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.admin-home-divider {
+  width: 70px;
+  height: 2px;
+
+  margin: 30px auto;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  border-radius: 20px;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.admin-home-status {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+
+/* =========================================
+   STATUS DOT
+========================================= */
+
+.admin-status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #b8d8c8;
+
+  box-shadow:
+    0 0 0 5px rgba(184, 216, 200, 0.12),
+    0 0 15px rgba(184, 216, 200, 0.55);
+
+  animation: adminStatusPulse 2s infinite;
+}
+
+
+/* =========================================
+   CARD ANIMATION
+========================================= */
+
+@keyframes adminCardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================
+   STATUS ANIMATION
+========================================= */
+
+@keyframes adminStatusPulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(184, 216, 200, 0.35);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 8px rgba(184, 216, 200, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(184, 216, 200, 0);
+  }
+}
+
+
+/* =========================================
+   LARGE TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+  .admin-home-page {
+    padding: 35px 18px;
+  }
+
+  .admin-home-glass-card {
+    max-width: 650px;
+
+    padding: 55px 45px;
+
+    border-radius: 24px;
+  }
+
+  .admin-home-glass-card p {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 768px) {
+  .admin-home-page {
+    min-height: 100svh;
+
+    padding: 30px 16px;
+
+    background-position: center;
+  }
+
+  .admin-home-glass-card {
+    padding: 48px 30px;
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+
+  .admin-home-badge {
+    font-size: 11px;
+
+    padding: 7px 15px;
+
+    letter-spacing: 1.6px;
+  }
+
+  .admin-home-glass-card h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .admin-home-glass-card p {
+    margin-top: 20px;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+  .admin-home-divider {
+    margin: 25px auto;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .admin-home-page {
+    padding: 20px 14px;
+
+    align-items: center;
+  }
+
+  .admin-home-glass-card {
+    padding: 40px 22px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .admin-home-badge {
+    margin-bottom: 18px;
+
+    padding: 6px 13px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.3px;
+  }
+
+  .admin-home-glass-card h1 {
+    font-size: 39px;
+
+    line-height: 1.12;
+
+    letter-spacing: -1px;
+  }
+
+  .admin-home-glass-card p {
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  .admin-home-divider {
+    width: 55px;
+
+    margin: 22px auto;
+  }
+
+  .admin-home-status {
+    font-size: 13px;
+  }
+
+  .admin-status-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 360px) {
+  .admin-home-page {
+    padding: 15px 10px;
+  }
+
+  .admin-home-glass-card {
+    padding: 34px 18px;
+
+    border-radius: 18px;
+  }
+
+  .admin-home-glass-card h1 {
+    font-size: 33px;
+  }
+
+  .admin-home-glass-card p {
+    font-size: 13px;
+  }
+
+  .admin-home-status {
+    font-size: 12px;
+  }
+}

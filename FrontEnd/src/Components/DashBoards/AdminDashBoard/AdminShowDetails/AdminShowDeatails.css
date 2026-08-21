@@ -1,0 +1,877 @@
+```css
+/* =========================================
+   ADMIN SHOW DETAILS
+========================================= */
+
+.admin-show-page {
+  min-height: 100vh;
+  width: 100%;
+
+  padding: 45px 25px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f2f5f3,
+      #e9efec
+    );
+
+  overflow-x: hidden;
+}
+
+.admin-show-container {
+  width: 100%;
+  max-width: 1450px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.admin-show-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-bottom: 30px;
+}
+
+.admin-show-overline {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #728079;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.admin-show-header h1 {
+  margin: 0;
+
+  color: #1e3029;
+
+  font-size: clamp(34px, 4vw, 52px);
+
+  line-height: 1.05;
+
+  letter-spacing: -1.5px;
+}
+
+.admin-show-header p {
+  margin: 12px 0 0;
+
+  color: #7b8982;
+
+  font-size: 15px;
+}
+
+.admin-show-add-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: none;
+
+  padding: 14px 21px;
+
+  border-radius: 13px;
+
+  background: #263c33;
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 25px rgba(38, 60, 51, 0.18);
+
+  transition: 0.3s ease;
+}
+
+.admin-show-add-btn span {
+  font-size: 21px;
+
+  line-height: 1;
+}
+
+.admin-show-add-btn:hover {
+  background: #1a2e25;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   STAT
+========================================= */
+
+.admin-show-stat {
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+}
+
+.admin-show-stat > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 11px 16px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  border: 1px solid rgba(38, 60, 51, 0.08);
+}
+
+.admin-show-stat strong {
+  color: #263c33;
+
+  font-size: 20px;
+}
+
+.admin-show-stat span {
+  color: #7c8983;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   FILTER
+========================================= */
+
+.admin-show-filter {
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 1.7fr)
+    repeat(3, minmax(150px, 1fr));
+
+  gap: 12px;
+
+  margin-bottom: 28px;
+
+  padding: 13px;
+
+  border-radius: 17px;
+
+  background: rgba(255, 255, 255, 0.62);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow:
+    0 10px 30px rgba(38, 60, 51, 0.05);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* Search */
+
+.admin-show-search {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+
+  padding: 0 13px;
+
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  border: 1px solid rgba(38, 60, 51, 0.1);
+}
+
+.admin-show-search > span {
+  color: #66766e;
+
+  font-size: 21px;
+}
+
+.admin-show-search input {
+  min-width: 0;
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding: 13px 0;
+
+  color: #263c33;
+
+  font-family: inherit;
+
+  font-size: 13px;
+}
+
+.admin-show-search input::placeholder {
+  color: #9ba6a1;
+}
+
+.admin-show-search button {
+  border: none;
+
+  background: transparent;
+
+  color: #7c8983;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+/* Selects */
+
+.admin-show-filter select {
+  width: 100%;
+
+  min-width: 0;
+
+  border: 1px solid rgba(38, 60, 51, 0.1);
+
+  outline: none;
+
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  color: #44554d;
+
+  padding: 0 12px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   PROPERTY GRID
+   4 CARDS PER ROW
+========================================= */
+
+.admin-show-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* =========================================
+   PROPERTY CARD
+========================================= */
+
+.admin-property-card {
+  min-width: 0;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+
+  box-shadow:
+    0 15px 40px rgba(35, 56, 47, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.admin-property-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 22px 45px rgba(35, 56, 47, 0.14);
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.admin-property-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 205px;
+
+  overflow: hidden;
+
+  background: #dce3df;
+}
+
+.admin-property-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.admin-property-card:hover
+.admin-property-image img {
+  transform: scale(1.05);
+}
+
+.admin-no-image {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #77857e;
+
+  font-size: 13px;
+}
+
+
+/* Property type */
+
+.admin-property-type {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  padding: 6px 10px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  color: #263c33;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* Price */
+
+.admin-property-price {
+  position: absolute;
+
+  right: 12px;
+  bottom: 12px;
+
+  padding: 7px 10px;
+
+  border-radius: 8px;
+
+  background: rgba(20, 35, 29, 0.72);
+
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.admin-property-content {
+  padding: 17px;
+}
+
+.admin-property-content h2 {
+  margin: 0;
+
+  overflow: hidden;
+
+  color: #263c33;
+
+  font-size: 17px;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+.admin-property-location {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin: 8px 0 0;
+
+  overflow: hidden;
+
+  color: #697a72;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+.admin-property-location span {
+  color: #52685d;
+}
+
+.admin-property-address {
+  height: 34px;
+
+  overflow: hidden;
+
+  margin: 7px 0 0;
+
+  color: #929d98;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   PROPERTY DETAILS
+========================================= */
+
+.admin-property-details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  margin-top: 15px;
+
+  padding: 12px 0;
+
+  border-top: 1px solid rgba(38, 60, 51, 0.08);
+
+  border-bottom: 1px solid rgba(38, 60, 51, 0.08);
+}
+
+.admin-property-details div {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 3px;
+}
+
+.admin-property-details div + div {
+  border-left: 1px solid rgba(38, 60, 51, 0.08);
+}
+
+.admin-property-details strong {
+  color: #354a41;
+
+  font-size: 13px;
+}
+
+.admin-property-details span {
+  color: #929d98;
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   AMENITIES
+========================================= */
+
+.admin-property-amenities {
+  display: flex;
+
+  gap: 5px;
+
+  overflow: hidden;
+
+  margin-top: 12px;
+}
+
+.admin-property-amenities span {
+  flex-shrink: 0;
+
+  max-width: 90px;
+
+  overflow: hidden;
+
+  padding: 5px 7px;
+
+  border-radius: 6px;
+
+  background: rgba(38, 60, 51, 0.06);
+
+  color: #63736c;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.admin-property-actions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 8px;
+
+  margin-top: 15px;
+}
+
+.admin-property-actions button {
+  min-height: 38px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.admin-update-btn {
+  border: 1px solid rgba(38, 60, 51, 0.15);
+
+  background: rgba(38, 60, 51, 0.06);
+
+  color: #263c33;
+}
+
+.admin-update-btn:hover {
+  background: #263c33;
+
+  color: #fff;
+}
+
+.admin-delete-btn {
+  border: 1px solid rgba(170, 60, 60, 0.15);
+
+  background: rgba(170, 60, 60, 0.05);
+
+  color: #a33a3a;
+}
+
+.admin-delete-btn:hover {
+  background: #a33a3a;
+
+  color: #fff;
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.admin-show-empty {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  min-height: 380px;
+
+  padding: 30px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  text-align: center;
+}
+
+.admin-empty-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 65px;
+  height: 65px;
+
+  margin-bottom: 15px;
+
+  border-radius: 20px;
+
+  background: rgba(38, 60, 51, 0.08);
+
+  color: #263c33;
+
+  font-size: 28px;
+}
+
+.admin-show-empty h2 {
+  margin: 0;
+
+  color: #263c33;
+
+  font-size: 22px;
+}
+
+.admin-show-empty p {
+  margin: 8px 0 20px;
+
+  color: #87938e;
+
+  font-size: 13px;
+}
+
+.admin-show-empty button {
+  border: none;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  background: #263c33;
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.admin-show-loading {
+  min-height: 350px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.admin-show-loading p {
+  margin: 0;
+
+  color: #718078;
+
+  font-size: 13px;
+}
+
+.admin-show-spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 3px solid rgba(38, 60, 51, 0.12);
+
+  border-top-color: #263c33;
+
+  border-radius: 50%;
+
+  animation:
+    adminSpin 0.8s linear infinite;
+}
+
+@keyframes adminSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   LARGE LAPTOP
+========================================= */
+
+@media (max-width: 1250px) {
+  .admin-show-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+  .admin-show-page {
+    padding: 35px 18px;
+  }
+
+  .admin-show-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-show-filter {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-show-search {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .admin-show-page {
+    padding: 25px 12px;
+  }
+
+  .admin-show-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .admin-show-add-btn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .admin-show-stat {
+    width: 100%;
+  }
+
+  .admin-show-stat > div {
+    flex: 1;
+  }
+
+  .admin-show-filter {
+    grid-template-columns: 1fr;
+
+    padding: 10px;
+  }
+
+  .admin-show-search {
+    grid-column: auto;
+  }
+
+  .admin-show-filter select {
+    min-height: 44px;
+  }
+
+  .admin-show-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .admin-property-image {
+    height: 230px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .admin-show-page {
+    padding: 20px 9px;
+  }
+
+  .admin-show-header h1 {
+    font-size: 31px;
+  }
+
+  .admin-show-header p {
+    font-size: 12px;
+  }
+
+  .admin-property-image {
+    height: 210px;
+  }
+
+  .admin-property-content {
+    padding: 15px;
+  }
+}
+

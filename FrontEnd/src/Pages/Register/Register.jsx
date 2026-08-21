@@ -60,7 +60,7 @@ const Register = () => {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:8095/api/registerRouter/Register",
+        "https://content-management-system-backend-g705.onrender.com/api/registerRouter/Register",
         {
           method: "POST",
           headers: {

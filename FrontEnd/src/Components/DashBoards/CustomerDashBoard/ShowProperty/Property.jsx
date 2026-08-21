@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Property.css";
 
-const BASE_URL = "http://localhost:8095/api"; // update to your actual backend base URL
+const BASE_URL = "https://content-management-system-backend-g705.onrender.com/api"; // update to your actual backend base URL
 
 const Property = () => {
   const [properties, setProperties] = useState([]);

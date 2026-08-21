@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Favorites.css";
 
-const BASE_URL = "http://localhost:8095/api";
+const BASE_URL = "https://content-management-system-backend-g705.onrender.com/api";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./AdminShowDeatails.css";
 
-const API_BASE_URL = "http://localhost:8095/api";
+const API_BASE_URL = "https://content-management-system-backend-g705.onrender.com/api";
 
 const AdminShowDeatails = () => {
   const navigate = useNavigate();

@@ -180,7 +180,7 @@ const AddDetails = () => {
       setImages([]);
       setImagePreview([]);
 
-      navigate("/admin-show-details");
+      navigate("/admin-home/show-details");
     } catch (error) {
       console.error("Create Property Error:", error);
 

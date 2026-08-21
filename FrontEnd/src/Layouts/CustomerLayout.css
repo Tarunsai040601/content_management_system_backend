@@ -15,11 +15,8 @@
 
 .customer-layout-content {
   width: 100%;
-
   min-height: calc(100vh - 75px);
-
-  padding: 30px;
-
+  padding: 0;
   background: #f8f7f4;
 }
 
@@ -30,13 +27,12 @@
 @media (max-width: 768px) {
   .customer-layout-content {
     min-height: calc(100vh - 65px);
-
-    padding: 20px 16px;
+    padding: 0;
   }
 }
 
 @media (max-width: 480px) {
   .customer-layout-content {
-    padding: 15px 12px;
+    padding: 0;
   }
 }

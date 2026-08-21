@@ -3,6 +3,8 @@ const multer = require("multer");
 const routerData = require("./Routers/AuthRouter.js");
 const DataBaseConnection = require("./Configurations/Config.js");
 const Postrouter = require("./Routers/postRouter.js");
+const userRouter = require("./Routers/userRouter.js");
+const contactRouter = require("./Routers/contactRouter.js");
 const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv").config({ quiet: true });
@@ -18,6 +20,10 @@ app.use(cors());
 app.use("/api", routerData);
 // post Route
 app.use("/api", Postrouter);
+// user Route
+app.use("/api/user", userRouter);
+// contact Route
+app.use("/api", contactRouter);
 
 // Global error handler for Multer (and other errors)
 app.use((err, req, res, next) => {

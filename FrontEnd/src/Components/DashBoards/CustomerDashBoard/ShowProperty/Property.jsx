@@ -9,6 +9,7 @@ const Property = () => {
   const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [favorites, setFavorites] = useState([]);
 
   const [search, setSearch] = useState("");
   const [propertyType, setPropertyType] = useState("");
@@ -22,7 +23,24 @@ const Property = () => {
 
   useEffect(() => {
     fetchProperties();
+    fetchFavorites();
   }, []);
+
+  const fetchFavorites = async () => {
+    try {
+      const token = localStorage.getItem("customerToken");
+      if (!token) return;
+
+      const res = await axios.get(`${BASE_URL}/user/favorites`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setFavorites(res.data.favorites.map(f => f._id));
+    } catch (err) {
+      console.error("Failed to fetch favorites", err);
+    }
+  };
 
   const fetchProperties = async () => {
     try {
@@ -107,6 +125,32 @@ const Property = () => {
     setSelectedProperty(null);
     setActiveImage(0);
     document.body.style.overflow = "auto";
+  };
+
+  const toggleFavorite = async (propertyId, e) => {
+    if (e) e.stopPropagation();
+    try {
+      const token = localStorage.getItem("customerToken");
+      if (!token) {
+        alert("Please login to save favorites");
+        return;
+      }
+      
+      const res = await axios.post(`${BASE_URL}/user/toggle-favorite/${propertyId}`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      const isFav = favorites.includes(propertyId);
+      if (isFav) {
+        setFavorites(favorites.filter(id => id !== propertyId));
+      } else {
+        setFavorites([...favorites, propertyId]);
+      }
+    } catch (err) {
+      console.error("Failed to toggle favorite", err);
+    }
   };
 
   return (
@@ -230,6 +274,12 @@ const Property = () => {
                 >
                   {p.status === "sold" ? "Sold" : "Available"}
                 </span>
+                <button 
+                  className={`favorite-btn ${favorites.includes(p._id) ? "favorited" : ""}`}
+                  onClick={(e) => toggleFavorite(p._id, e)}
+                >
+                  {favorites.includes(p._id) ? "❤️" : "🤍"}
+                </button>
               </div>
 
               <div className="property-card-body">
@@ -308,6 +358,13 @@ const Property = () => {
               >
                 {selectedProperty.status === "sold" ? "Sold" : "Available"}
               </span>
+
+              <button 
+                  className={`favorite-btn-modal ${favorites.includes(selectedProperty._id) ? "favorited" : ""}`}
+                  onClick={(e) => toggleFavorite(selectedProperty._id, e)}
+                >
+                  {favorites.includes(selectedProperty._id) ? "❤️ Saved" : "🤍 Save to Favorites"}
+              </button>
 
               <h2>{selectedProperty.propertyName}</h2>
               <p className="modal-address">{selectedProperty.fullAddress}</p>

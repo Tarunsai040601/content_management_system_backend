@@ -10,7 +10,9 @@ import AdminHome from "./Components/DashBoards/AdminDashBoard/AdminHome/AdminHom
 import AddDetails from "./Components/DashBoards/AdminDashBoard/AddDetails/AddDetails.jsx";
 import AdminShowDeatails from "./Components/DashBoards/AdminDashBoard/AdminShowDetails/AdminShowDeatails.jsx";
 import Property from "./Components/DashBoards/CustomerDashBoard/ShowProperty/Property.jsx";
-
+import Favorites from "./Components/DashBoards/CustomerDashBoard/Favorites/Favorites.jsx";
+import About from "./Components/DashBoards/CustomerDashBoard/About/About.jsx";
+import Contact from "./Components/DashBoards/CustomerDashBoard/Contact/Contact.jsx";
 
 const App = () => {
   return (
@@ -41,8 +43,11 @@ const App = () => {
       ========================= */}
 
       <Route path="/customer-dashboard" element={<CustomerLayout />}>
-        {/* /customer-dashboard */}
         <Route index element={<Property/>} />
+        <Route path="properties" element={<Property/>} />
+        <Route path="favorites" element={<Favorites/>} />
+        <Route path="about" element={<About/>} />
+        <Route path="contact" element={<Contact/>} />
       </Route>
     </Routes>
   );

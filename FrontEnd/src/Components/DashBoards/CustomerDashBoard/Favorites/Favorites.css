@@ -1,0 +1,58 @@
+.favorites-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding-bottom: 50px;
+}
+
+.favorites-header {
+  background: linear-gradient(135deg, #1a2a22 0%, #2c4a3b 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.favorites-header-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.favorites-header-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.no-favorites-container {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-top: 40px;
+}
+
+.no-favorites-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.no-favorites-container h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.no-favorites-container p {
+  color: #666;
+}
+
+/* We can reuse the property-grid and card styles from Property.css
+   Since Property.css is already loaded in the app when visiting the property page,
+   or we can just rely on it. Let's make sure things render nicely by adding missing styles if any, 
+   but since they share classes, they will share styles from Property.css if it's imported globally. 
+   Actually, CSS in React is often global unless using modules. We will import Property.css in App.jsx or let it be global.
+*/

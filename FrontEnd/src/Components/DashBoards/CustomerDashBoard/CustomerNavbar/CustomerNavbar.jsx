@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./CustomerNavbar.css";
@@ -7,6 +7,19 @@ const CustomerNavbar = () => {
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [customerName, setCustomerName] = useState("");
+
+  useEffect(() => {
+    const userStr = localStorage.getItem("customerUser");
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        setCustomerName(user.name || "");
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []);
 
   // =========================
   // TOGGLE MENU
@@ -136,6 +149,12 @@ const CustomerNavbar = () => {
         >
           Contact
         </Link>
+
+        {customerName && (
+          <span style={{ color: "#34483f", margin: "0 10px", fontSize: "14px", fontWeight: "600", display: "flex", alignItems: "center" }}>
+            Welcome: {customerName}
+          </span>
+        )}
 
         {/* Logout */}
 

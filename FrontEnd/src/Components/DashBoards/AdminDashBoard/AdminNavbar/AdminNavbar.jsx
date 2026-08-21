@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./AdminNavbar.css";
@@ -7,6 +7,19 @@ const AdminNavbar = () => {
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [adminName, setAdminName] = useState("");
+
+  useEffect(() => {
+    const userStr = localStorage.getItem("adminUser");
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        setAdminName(user.name || "");
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []);
 
   // ================================
   // MOBILE MENU TOGGLE
@@ -107,6 +120,12 @@ const AdminNavbar = () => {
         >
           ShowDetails
         </Link>
+
+        {adminName && (
+          <span style={{ color: "rgba(255, 255, 255, 0.78)", margin: "0 10px", fontSize: "14px", fontWeight: "500", display: "flex", alignItems: "center" }}>
+            Welcome: {adminName}
+          </span>
+        )}
 
         <button
           type="button"

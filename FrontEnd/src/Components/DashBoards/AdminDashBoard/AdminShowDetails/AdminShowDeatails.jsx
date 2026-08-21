@@ -245,7 +245,7 @@ const AdminShowDeatails = () => {
 
   const handleUpdate = (property) => {
     navigate(
-      `/admin-home/show-details/${encodeURIComponent(property.propertyName)}`,
+      `/admin-home/update-details/${encodeURIComponent(property.propertyName)}`,
     );
   };
 

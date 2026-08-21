@@ -9,6 +9,7 @@ import CustomerLayout from "./Layouts/CustomerLayout.jsx";
 import AdminHome from "./Components/DashBoards/AdminDashBoard/AdminHome/AdminHome.jsx";
 import AddDetails from "./Components/DashBoards/AdminDashBoard/AddDetails/AddDetails.jsx";
 import AdminShowDeatails from "./Components/DashBoards/AdminDashBoard/AdminShowDetails/AdminShowDeatails.jsx";
+import UpdateDetails from "./Components/DashBoards/AdminDashBoard/UpdateDetails/UpdateDetails.jsx";
 import Property from "./Components/DashBoards/CustomerDashBoard/ShowProperty/Property.jsx";
 import Favorites from "./Components/DashBoards/CustomerDashBoard/Favorites/Favorites.jsx";
 import About from "./Components/DashBoards/CustomerDashBoard/About/About.jsx";
@@ -36,6 +37,7 @@ const App = () => {
         <Route index element={<AdminHome/>} />
         <Route path="add-details" element={<AddDetails/>}/>
         <Route path="show-details" element={<AdminShowDeatails/>}/>
+        <Route path="update-details/:propertyName" element={<UpdateDetails/>}/>
       </Route>
 
       {/* =========================

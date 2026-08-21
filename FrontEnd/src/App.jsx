@@ -9,6 +9,7 @@ import CustomerLayout from "./Layouts/CustomerLayout.jsx";
 import AdminHome from "./Components/DashBoards/AdminDashBoard/AdminHome/AdminHome.jsx";
 import AddDetails from "./Components/DashBoards/AdminDashBoard/AddDetails/AddDetails.jsx";
 import AdminShowDeatails from "./Components/DashBoards/AdminDashBoard/AdminShowDetails/AdminShowDeatails.jsx";
+import Property from "./Components/DashBoards/CustomerDashBoard/ShowProperty/Property.jsx";
 
 
 const App = () => {
@@ -33,9 +34,6 @@ const App = () => {
         <Route index element={<AdminHome/>} />
         <Route path="add-details" element={<AddDetails/>}/>
         <Route path="show-details" element={<AdminShowDeatails/>}/>
-
-        {/* /admin-dashboard/add-details */}
-        {/* <Route path="add-details" element={<AddDetails />} /> */}
       </Route>
 
       {/* =========================
@@ -44,7 +42,7 @@ const App = () => {
 
       <Route path="/customer-dashboard" element={<CustomerLayout />}>
         {/* /customer-dashboard */}
-        {/* <Route index element={<CustomerDashboard />} /> */}
+        <Route index element={<Property/>} />
       </Route>
     </Routes>
   );

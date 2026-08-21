@@ -97,13 +97,13 @@ const CustomerNavbar = () => {
         }`}
       >
 
-        <Link
+        {/* <Link
           to="/customer-dashboard"
           onClick={closeMenu}
           className="customer-nav-link"
         >
           Home
-        </Link>
+        </Link> */}
 
         <Link
           to="/customer-dashboard/properties"

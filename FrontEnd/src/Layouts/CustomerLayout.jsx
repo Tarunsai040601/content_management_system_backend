@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import CustomerNavbar from "../Components/DashBoards/CustomerDashBoard/CustomerNavbar/CustomerNavbar.jsx";
+import Footer from "../Components/Footer/Footer.jsx";
 import "./CustomerLayout.css";
 
 const CustomerLayout = () => {
@@ -17,6 +18,8 @@ const CustomerLayout = () => {
       <main className="customer-layout-content">
         <Outlet />
       </main>
+      
+      <Footer />
     </div>
   );
 };

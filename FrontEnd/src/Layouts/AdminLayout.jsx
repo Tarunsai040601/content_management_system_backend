@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import AdminNavbar from '../Components/DashBoards/AdminDashBoard/AdminNavbar/AdminNavbar.jsx'
+import Footer from '../Components/Footer/Footer.jsx';
 import "./AdminLayout.css";
 
 const AdminLayout = () => {
@@ -19,6 +20,7 @@ const AdminLayout = () => {
         <main className="admin-main-content">
           <Outlet />
         </main>
+        <Footer />
       </div>
     </div>
   );
